@@ -28,19 +28,19 @@ get "/sms/incoming" do
   message = ""
   media = nil
 
-  if body == "hi"
+  if body.include?("hi")
     message = "Hi, I'm MYbot. I can answer basic questions about Mengyang, who developed me."
-  elsif body == "birthday"
+  elsif body.include?("birthday")
     message = "Mengyang's birthday is May 24th"
-  elsif body == "what"
+  elsif body.include?("what")
     message = "I am a simple bot. I can only answer basic questions about Mengyang :P"
-  elsif body == "age"
+  elsif body.include?("age")
     message = "You are rude! You shouldn't ask this question!"
-  elsif body == "eat"
+  elsif body.include?("eat")
     message = "Mengyang is a foodie! She loves to eat almost everything :D"
-  elsif body == "sports"
+  elsif body.include?("sports")
     message = "hmmm Mengyang is not a big fan of sports!"
-  elsif body == "bye"
+  elsif body.include?("bye")
     message = "Bye! Talk to me again!"
   end
 
