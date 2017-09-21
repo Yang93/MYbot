@@ -32,7 +32,7 @@ get "/sms/incoming" do
     message = "Hi, I'm MYbot. I can answer basic questions about Mengyang, who developed me."
   elsif body.include?("birthday")
     message = "Mengyang's birthday is May 24th"
-  elsif body.include?("what")
+  elsif body.include?("what can")
     message = "I am a simple bot. I can only answer basic questions about Mengyang :P"
   elsif body.include?("age")
     message = "You are rude! You shouldn't ask this question!"
@@ -42,6 +42,9 @@ get "/sms/incoming" do
     message = "hmmm Mengyang is not a big fan of sports!"
   elsif body.include?("bye")
     message = "Bye! Talk to me again!"
+  elsif body.include?("thanks")
+    message = "You're very welcome! Glad that I can help!"
+
   end
 
 
