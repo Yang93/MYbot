@@ -16,10 +16,17 @@ enable :sessions
 
 
 get "/sms/incoming" do
+  session["last_intent"] ||= nil
+
+  session["counter"] ||= 1
+  count = session["counter"]
+
+  sender = params[:From] || ""
   body = params[:Body] || ""
   body = body.downcase.strip
 
   message = ""
+  media = nil
 
   if body == "hi"
     message = "Hi, I'm MYbot. I can answer basic questions about Mengyang, who developed me."
@@ -41,9 +48,12 @@ get "/sms/incoming" do
   twiml = Twilio::TwiML::MessagingResponse.new do |r|
     r.message do |m|
       m.body( message)
+      unless media.nil?
+        m.media(media)
+      end
    end
   end
-  
+
   content_type 'text/xml'
   twiml.to_s
 
